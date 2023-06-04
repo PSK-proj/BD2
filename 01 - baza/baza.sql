@@ -1,7 +1,7 @@
 DROP TABLE reklamacje CASCADE CONSTRAINTS;
 DROP TABLE oferty_specjalne CASCADE CONSTRAINTS;
 DROP TABLE dostawy_klientow CASCADE CONSTRAINTS;
-DROP TABLE zamowienia_pozycje CASCADE CONSTRAINTS;
+DROP TABLE zamowieniapozycje CASCADE CONSTRAINTS;
 DROP TABLE zamowienia CASCADE CONSTRAINTS;
 DROP TABLE dostawy CASCADE CONSTRAINTS;
 DROP TABLE dostawcy CASCADE CONSTRAINTS;
@@ -139,8 +139,8 @@ CREATE TABLE zamowienia(
     status VARCHAR2(20) NOT NULL
 )
 /
-CREATE TABLE zamowienia_pozycje(
-    id_zamowienia_pozycje NUMBER CONSTRAINT zamowieniapozycje_pk PRIMARY KEY,
+CREATE TABLE zamowieniapozycje(
+    id_zamowieniapozycje NUMBER CONSTRAINT zamowieniapozycje_pk PRIMARY KEY,
     id_zamowienia NUMBER CONSTRAINT zamowieniapozycje_zamowienia_fk REFERENCES zamowienia(id_zamowienia) NOT NULL,
     id_gatunku NUMBER CONSTRAINT zamowieniapozycje_gatunki_fk REFERENCES gatunki(id_gatunku),
     id_uslugi NUMBER CONSTRAINT zamowieniapozycje_uslugi_fk REFERENCES uslugi(id_uslugi),
