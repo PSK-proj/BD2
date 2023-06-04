@@ -52,10 +52,9 @@ Zawiera dane adresowe.
 | **Nazwa**     | **Klucz główny** | **Klucz obcy** | **Unique** | **NULLable** | **Typ/Dziedzina** | **Opis**         |
 | ------------- | ---------------- | -------------- | ---------- | ------------ | ----------------- | ---------------- |
 | id_adresu     | Tak              | Nie            | Tak        | Nie          | NUMBER            | Identyfikator    |
-| typ_adresu    | Nie              | Nie            | Nie        | Nie          | VARCHAR2(18)      | Typu adresu      |
-| kraj          | Nie              | Nie            | Nie        | Nie          | VARCHAR2(20)      | Kraj             |
-| miasto        | Nie              | Nie            | Nie        | Nie          | VARCHAR2(30)      | Miasto           |
-| ulica         | Nie              | Nie            | Nie        | Nie          | VARCHAR2(50)      | Ulica            |
+| kraj          | Nie              | Nie            | Nie        | Nie          | VARCHAR2(70)      | Kraj             |
+| miasto        | Nie              | Nie            | Nie        | Nie          | VARCHAR2(70)      | Miasto           |
+| ulica         | Nie              | Nie            | Nie        | Nie          | VARCHAR2(70)      | Ulica            |
 | nr_budynku    | Nie              | Nie            | Nie        | Nie          | SMALLINT          | Numer budynku    |
 | nr_mieszkania | Nie              | Nie            | Nie        | Tak          | SMALLINT          | Numer mieszkania |
 
@@ -69,7 +68,7 @@ Zawiera budynki kwiaciarni.
 | ------------- | ---------------- | -------------- | ---------- | ------------ | ----------------- | ------------------------ |
 | id_kwiaciarni | Tak              | Nie            | Tak        | Nie          | NUMBER            | Identyfikator            |
 | id_adresu     | Nie              | Tak (Adresy)   | Tak        | Nie          | NUMBER            | Klucz obcy do adresu     |
-| nazwa         | Nie              | Nie            | Nie        | Nie          | VARCHAR2(20)      | Nazwa budynku kwiaciarni |
+| nazwa         | Nie              | Nie            | Nie        | Nie          | VARCHAR2(70)      | Nazwa budynku kwiaciarni |
 
 ### 3. Magazyny
 

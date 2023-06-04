@@ -6,7 +6,6 @@ FIELDS TERMINATED BY ','
 TRAILING NULLCOLS
 (
   id_adresu,
-  typ_adresu,
   kraj,
   miasto,
   ulica,
