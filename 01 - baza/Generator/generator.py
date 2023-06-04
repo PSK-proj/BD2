@@ -13,7 +13,7 @@ fake = Faker('pl_PL')
 num_of_rows = 1000
 
 #* Generowanie danych dla tabeli 'adresy'
-with open('../Dane/adresy.csv', 'w', newline='') as file:
+with open('../Dane/adresy.csv', 'w', newline='', encoding='utf-8') as file:
     writer = csv.writer(file)
     for _ in range(num_of_rows):
         id_adresu = _
@@ -23,10 +23,10 @@ with open('../Dane/adresy.csv', 'w', newline='') as file:
         ulica = fake.street_name()
         nr_budynku = fake.building_number()
         nr_mieszkania = random.randint(1, 100)
-        writer.writerow([id_adresu, typ_adresu, kraj.encode('utf-8'), miasto.encode('utf-8'), ulica.encode('utf-8'), nr_budynku, nr_mieszkania])
+        writer.writerow([id_adresu, typ_adresu, kraj, miasto, ulica, nr_budynku, nr_mieszkania])
 
 #* Generowanie danych dla tabeli 'kwiaciarnie'
-with open('../Dane/kwiaciarnie.csv', 'w', newline='') as file:
+with open('../Dane/kwiaciarnie.csv', 'w', newline='', encoding='utf-8') as file:
     writer = csv.writer(file)
     for _ in range(num_of_rows):
         id_kwiaciarni = _
@@ -35,7 +35,7 @@ with open('../Dane/kwiaciarnie.csv', 'w', newline='') as file:
         writer.writerow([id_kwiaciarni, id_adresu, nazwa])
 
 #* Generowanie danych dla tabeli 'magazyny'
-with open('../Dane/magazyny.csv', 'w', newline='') as file:
+with open('../Dane/magazyny.csv', 'w', newline='', encoding='utf-8') as file:
     writer = csv.writer(file)
     for _ in range(num_of_rows):
         id_magazynu = _
@@ -43,7 +43,7 @@ with open('../Dane/magazyny.csv', 'w', newline='') as file:
         writer.writerow([id_magazynu, id_kwiaciarni])
 
 #* Generowanie danych dla tabeli 'gatunki'
-with open('../Dane/gatunki.csv', 'w', newline='') as file:
+with open('../Dane/gatunki.csv', 'w', newline='', encoding='utf-8') as file:
     writer = csv.writer(file)
     for _ in range(100):
         id_gatunku = _
@@ -53,7 +53,7 @@ with open('../Dane/gatunki.csv', 'w', newline='') as file:
         writer.writerow([id_gatunku, nazwa, cena])
 
 #* Generowanie danych dla tabeli 'magazynygatunki'
-with open('../Dane/magazynygatunki.csv', 'w', newline='') as file:
+with open('../Dane/magazynygatunki.csv', 'w', newline='', encoding='utf-8') as file:
     writer = csv.writer(file)
     for _ in range(num_of_rows * 10):
         id_magazynygatunki = _
@@ -63,7 +63,7 @@ with open('../Dane/magazynygatunki.csv', 'w', newline='') as file:
         writer.writerow([id_magazynygatunki, id_magazynu, id_gatunku, ilosc])
 
 #* Generowanie danych dla tabeli 'uslugi'
-with open('../Dane/uslugi.csv', 'w', newline='') as file:
+with open('../Dane/uslugi.csv', 'w', newline='', encoding='utf-8') as file:
     writer = csv.writer(file)
     for _ in range(num_of_rows):
         id_uslugi = _
@@ -72,7 +72,7 @@ with open('../Dane/uslugi.csv', 'w', newline='') as file:
         writer.writerow([id_uslugi, nazwa, doplata])
 
 #* Generowanie danych dla tabeli 'kwiaciarnieuslugi'
-with open('../Dane/kwiaciarnieuslugi.csv', 'w', newline='') as file:
+with open('../Dane/kwiaciarnieuslugi.csv', 'w', newline='', encoding='utf-8') as file:
     writer = csv.writer(file)
     for _ in range(num_of_rows * 10):
         id_kwiaciarnieuslugi = _
@@ -81,7 +81,7 @@ with open('../Dane/kwiaciarnieuslugi.csv', 'w', newline='') as file:
         writer.writerow([id_kwiaciarnieuslugi, id_kwiaciarni, id_uslugi])
 
 #* Generowanie danych dla tabeli 'dane_personalne'
-with open('../Dane/dane_personalne.csv', 'w', newline='') as file:
+with open('../Dane/dane_personalne.csv', 'w', newline='', encoding='utf-8') as file:
     writer = csv.writer(file)
     for _ in range(num_of_rows):
         id_danych = _
@@ -95,7 +95,7 @@ with open('../Dane/dane_personalne.csv', 'w', newline='') as file:
         writer.writerow([id_danych, id_adresu, nazwisko, imie, PESEL, NIP, telefon, email])
 
 #* Generowanie danych dla tabeli 'pracownicy'
-with open('../Dane/pracownicy.csv', 'w', newline='') as file:
+with open('../Dane/pracownicy.csv', 'w', newline='', encoding='utf-8') as file:
     writer = csv.writer(file)
     for _ in range(num_of_rows):
         id_pracownika = _
@@ -104,7 +104,7 @@ with open('../Dane/pracownicy.csv', 'w', newline='') as file:
         writer.writerow([id_pracownika, id_danych, stanowisko])
 
 #* Generowanie danych dla tabeli 'zatrudnienia'
-with open('../Dane/zatrudnienia.csv', 'w', newline='') as file:
+with open('../Dane/zatrudnienia.csv', 'w', newline='', encoding='utf-8') as file:
     writer = csv.writer(file)
     for _ in range(num_of_rows):
         id_zatrudnienia = _
@@ -117,7 +117,7 @@ with open('../Dane/zatrudnienia.csv', 'w', newline='') as file:
         writer.writerow([id_zatrudnienia, id_kwiaciarni, id_pracownika, data_przyjecia, czy_na_urlopie, czy_zwolniony, data_zwolnienia])
 
 #* Generowanie danych dla tabeli 'klienci'
-with open('../Dane/klienci.csv', 'w', newline='') as file:
+with open('../Dane/klienci.csv', 'w', newline='', encoding='utf-8') as file:
     writer = csv.writer(file)
     for _ in range(num_of_rows):
         id_klienta = _
@@ -125,7 +125,7 @@ with open('../Dane/klienci.csv', 'w', newline='') as file:
         writer.writerow([id_klienta, id_danych])
 
 #* Generowanie danych dla tabeli 'rachunki'
-with open('../Dane/rachunki.csv', 'w', newline='') as file:
+with open('../Dane/rachunki.csv', 'w', newline='', encoding='utf-8') as file:
     writer = csv.writer(file)
     for _ in range(num_of_rows):
         id_rachunku = _
@@ -138,7 +138,7 @@ with open('../Dane/rachunki.csv', 'w', newline='') as file:
         writer.writerow([id_rachunku, id_kwiaciarni, id_pracownika, id_klienta, typ_rachunku, data_sprzedazy, suma_pln])
 
 #* Generowanie danych dla tabeli 'pozycja_paragonu'
-with open('../Dane/pozycja_paragonu.csv', 'w', newline='') as file:
+with open('../Dane/pozycja_paragonu.csv', 'w', newline='', encoding='utf-8') as file:
     writer = csv.writer(file)
     for _ in range(num_of_rows):
         id_pozycji_paragonu = _
@@ -149,7 +149,7 @@ with open('../Dane/pozycja_paragonu.csv', 'w', newline='') as file:
         writer.writerow([id_pozycji_paragonu, id_rachunku, id_gatunku, id_uslugi, ilosc])
 
 #* Generowanie danych dla tabeli 'dostawcy'
-with open('../Dane/dostawcy.csv', 'w', newline='') as file:
+with open('../Dane/dostawcy.csv', 'w', newline='', encoding='utf-8') as file:
     writer = csv.writer(file)
     for _ in range(num_of_rows):
         id_dostawcy = _
@@ -160,7 +160,7 @@ with open('../Dane/dostawcy.csv', 'w', newline='') as file:
         writer.writerow([id_dostawcy, nazwa, telefon, email, id_adresu])
 
 #* Generowanie danych dla tabeli 'dostawy'
-with open('../Dane/dostawy.csv', 'w', newline='') as file:
+with open('../Dane/dostawy.csv', 'w', newline='', encoding='utf-8') as file:
     writer = csv.writer(file)
     for _ in range(num_of_rows):
         id_dostawy = _
@@ -172,7 +172,7 @@ with open('../Dane/dostawy.csv', 'w', newline='') as file:
         writer.writerow([id_dostawy, id_dostawcy, id_gatunku, id_magazynu, ilosc, data_dostawy])
 
 #* Generowanie danych dla tabeli 'zamowienia'
-with open('../Dane/zamowienia.csv', 'w', newline='') as file:
+with open('../Dane/zamowienia.csv', 'w', newline='', encoding='utf-8') as file:
     writer = csv.writer(file)
     for _ in range(num_of_rows):
         id_zamowienia = _
@@ -181,7 +181,7 @@ with open('../Dane/zamowienia.csv', 'w', newline='') as file:
         writer.writerow([id_zamowienia, id_klienta, data_zamowienia])
 
 #* Generowanie danych dla tabeli 'zamowieniapozycje'
-with open('../Dane/zamowieniapozycje.csv', 'w', newline='') as file:
+with open('../Dane/zamowieniapozycje.csv', 'w', newline='', encoding='utf-8') as file:
     writer = csv.writer(file)
     for _ in range(num_of_rows * 10):
         id_zamowieniapozycje = _
@@ -192,7 +192,7 @@ with open('../Dane/zamowieniapozycje.csv', 'w', newline='') as file:
         writer.writerow([id_zamowieniapozycje, id_zamowienia, id_gatunku, id_uslugi, ilosc])
 
 #* Generowanie danych dla tabeli 'dostawy_klientów'
-with open('../Dane/dostawy_klientów.csv', 'w', newline='') as file:
+with open('../Dane/dostawy_klientów.csv', 'w', newline='', encoding='utf-8') as file:
     writer = csv.writer(file)
     for _ in range(num_of_rows):
         id_dostawy = _
@@ -204,7 +204,7 @@ with open('../Dane/dostawy_klientów.csv', 'w', newline='') as file:
         writer.writerow([id_dostawy, id_zamowienia, id_klienta, id_adresu, data_dostawy, status])
 
 #* Generowanie danych dla tabeli 'oferty_specjalne'
-with open('../Dane/oferty_specjalne.csv', 'w', newline='') as file:
+with open('../Dane/oferty_specjalne.csv', 'w', newline='', encoding='utf-8') as file:
     writer = csv.writer(file)
     for _ in range(num_of_rows):
         id_oferty = _
@@ -216,7 +216,7 @@ with open('../Dane/oferty_specjalne.csv', 'w', newline='') as file:
         writer.writerow([id_oferty, id_gatunku, id_uslugi, cena, data_rozpoczecia, data_zakonczenia])
 
 #* Generowanie danych dla tabeli 'reklamacje'
-with open('../Dane/reklamacje.csv', 'w', newline='') as file:
+with open('../Dane/reklamacje.csv', 'w', newline='', encoding='utf-8') as file:
     writer = csv.writer(file)
     for _ in range(num_of_rows):
         id_reklamacji = _

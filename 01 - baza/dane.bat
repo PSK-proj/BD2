@@ -24,5 +24,5 @@ sqlldr %user%/%pass%@%instance% CONTROL=./Loader/dostawy_klientow.ctl
 sqlldr %user%/%pass%@%instance% CONTROL=./Loader/oferty_specjalne.ctl
 sqlldr %user%/%pass%@%instance% CONTROL=./Loader/reklamacje.ctl
 
-move *.log Log
+move *.log ./Log
 PAUSE
