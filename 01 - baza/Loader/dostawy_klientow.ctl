@@ -1,6 +1,6 @@
 OPTIONS (SKIP=0)
 LOAD DATA
-INFILE '../Dane/dostawy_klientow.csv'
+INFILE '.\\Dane\\dostawy_klientow.csv' "str '\r\n'"
 INTO TABLE dostawy_klientow
 FIELDS TERMINATED BY ','
 TRAILING NULLCOLS

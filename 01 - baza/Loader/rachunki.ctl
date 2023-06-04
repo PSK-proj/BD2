@@ -1,6 +1,6 @@
 OPTIONS (SKIP=0)
 LOAD DATA
-INFILE '../Dane/rachunki.csv'
+INFILE '.\\Dane\\rachunki.csv' "str '\r\n'"
 INTO TABLE rachunki
 FIELDS TERMINATED BY ','
 TRAILING NULLCOLS
