@@ -11,5 +11,5 @@ TRAILING NULLCOLS
   id_klienta,
   typ_rachunku,
   data_sprzedazy,
-  suma_pln
+  suma_pln CHAR "TO_NUMBER(:suma_pln, '99999999.99', 'NLS_NUMERIC_CHARACTERS='',.''')"
 )

@@ -1,7 +1,8 @@
 @echo off
-set "user=c##BD2
+set "user=c##BD2"
 set "pass=123"
 set "instance=xe"
+set NLS_LANG=POLISH_POLAND.AL32UTF8
 
 sqlldr %user%/%pass%@%instance% CONTROL=./Loader/adresy.ctl
 sqlldr %user%/%pass%@%instance% CONTROL=./Loader/kwiaciarnie.ctl

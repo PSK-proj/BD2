@@ -111,11 +111,11 @@ with open('../Dane/zatrudnienia.csv', 'w', newline='', encoding='utf-8') as file
         id_kwiaciarni = random.randint(0, 100 - 1)
         id_pracownika = random.randint(0, 100 - 1)
         data_przyjecia = fake.date_between(start_date='-10y', end_date='today')
-        data_przyjecia = datetime.strptime(str(data_przyjecia), '%Y-%m-%d').strftime('%d-%b-%y')
+        data_przyjecia = datetime.strptime(str(data_przyjecia), '%Y-%m-%d').strftime('%d-%m-%y')
         czy_na_urlopie = random.randint(0, 1)
         czy_zwolniony = random.randint(0, 1)
         data_zwolnienia = fake.date_between(start_date='-1y', end_date='today') if czy_zwolniony else None
-        data_zwolnienia = datetime.strptime(str(data_zwolnienia), '%Y-%m-%d').strftime('%d-%b-%y')  if czy_zwolniony else None
+        data_zwolnienia = datetime.strptime(str(data_zwolnienia), '%Y-%m-%d').strftime('%d-%m-%y')  if czy_zwolniony else None
         writer.writerow([id_zatrudnienia, id_kwiaciarni, id_pracownika, data_przyjecia, czy_na_urlopie, czy_zwolniony, data_zwolnienia])
 
 #* Generowanie danych dla tabeli 'klienci'
@@ -136,7 +136,7 @@ with open('../Dane/rachunki.csv', 'w', newline='', encoding='utf-8') as file:
         id_klienta = random.randint(0, 800 - 1)
         typ_rachunku = random.choice(['faktura', 'paragon'])
         data_sprzedazy = fake.date_between(start_date='-1y', end_date='today')
-        data_sprzedazy = datetime.strptime(str(data_sprzedazy), '%Y-%m-%d').strftime('%d-%b-%y')
+        data_sprzedazy = datetime.strptime(str(data_sprzedazy), '%Y-%m-%d').strftime('%d-%m-%y')
         suma_pln = round(random.uniform(10, 1000), 2)
         writer.writerow([id_rachunku, id_kwiaciarni, id_pracownika, id_klienta, typ_rachunku, data_sprzedazy, suma_pln])
 
@@ -172,7 +172,7 @@ with open('../Dane/dostawy.csv', 'w', newline='', encoding='utf-8') as file:
         id_magazynu = random.randint(0, 100 - 1)
         ilosc = random.randint(1, 10)
         data_dostawy = fake.date_between(start_date='-1y', end_date='today')
-        data_dostawy = datetime.strptime(str(data_dostawy), '%Y-%m-%d').strftime('%d-%b-%y')
+        data_dostawy = datetime.strptime(str(data_dostawy), '%Y-%m-%d').strftime('%d-%m-%y')
         writer.writerow([id_dostawy, id_dostawcy, id_gatunku, id_magazynu, ilosc, data_dostawy])
 
 #* Generowanie danych dla tabeli 'zamowienia'
@@ -182,7 +182,7 @@ with open('../Dane/zamowienia.csv', 'w', newline='', encoding='utf-8') as file:
         id_zamowienia = _
         id_klienta = random.randint(0, 800 - 1)
         data_zamowienia = fake.date_between(start_date='-1y', end_date='today')
-        data_zamowienia = datetime.strptime(str(data_zamowienia), '%Y-%m-%d').strftime('%d-%b-%y')
+        data_zamowienia = datetime.strptime(str(data_zamowienia), '%Y-%m-%d').strftime('%d-%m-%y')
         status = random.choice(['oczekuje', 'zrealizowano', 'nie zrealizowano'])
         writer.writerow([id_zamowienia, id_klienta, data_zamowienia, status])
 
@@ -206,7 +206,7 @@ with open('../Dane/dostawy_klientow.csv', 'w', newline='', encoding='utf-8') as 
         id_klienta = random.randint(0, 800 - 1)
         id_adresu = random.randint(101, num_of_rows - 1)
         data_dostawy  = fake.date_between(start_date='-1y', end_date='today')
-        data_dostawy = datetime.strptime(str(data_dostawy), '%Y-%m-%d').strftime('%d-%b-%y')
+        data_dostawy = datetime.strptime(str(data_dostawy), '%Y-%m-%d').strftime('%d-%m-%y')
         status = random.choice(['oczekuje', 'dostarczono', 'nie dostarczono'])
         writer.writerow([id_dostawy, id_zamowienia, id_klienta, id_adresu, data_dostawy, status])
 
@@ -219,9 +219,9 @@ with open('../Dane/oferty_specjalne.csv', 'w', newline='', encoding='utf-8') as 
         id_uslugi = random.randint(0, 100 - 1)
         cena = round(random.uniform(50.0, 800.0), 2)
         data_rozpoczecia  = fake.date_between(start_date='-1y', end_date='-6m')
-        data_rozpoczecia2 = datetime.strptime(str(data_rozpoczecia), '%Y-%m-%d').strftime('%d-%b-%y')
+        data_rozpoczecia2 = datetime.strptime(str(data_rozpoczecia), '%Y-%m-%d').strftime('%d-%m-%y')
         data_zakonczenia = fake.date_between(start_date=data_rozpoczecia, end_date='today')
-        data_zakonczenia = datetime.strptime(str(data_zakonczenia), '%Y-%m-%d').strftime('%d-%b-%y')
+        data_zakonczenia = datetime.strptime(str(data_zakonczenia), '%Y-%m-%d').strftime('%d-%m-%y')
         writer.writerow([id_oferty, id_gatunku, id_uslugi, cena, data_rozpoczecia2, data_zakonczenia])
 
 #* Generowanie danych dla tabeli 'reklamacje'
@@ -233,7 +233,7 @@ with open('../Dane/reklamacje.csv', 'w', newline='', encoding='utf-8') as file:
         id_rachunku = random.randint(0, num_of_rows - 1)
         id_zamowienia = random.randint(0, num_of_rows - 1)
         data_reklamacji  = fake.date_between(start_date='-1y', end_date='today')
-        data_reklamacji = datetime.strptime(str(data_reklamacji), '%Y-%m-%d').strftime('%d-%b-%y')
+        data_reklamacji = datetime.strptime(str(data_reklamacji), '%Y-%m-%d').strftime('%d-%m-%y')
         status = random.choice(['oczekuje', 'przyjęto', 'odrzucono'])
         opis = random.choice([
           'Aut eum deleniti praesentium explicabo non est. Rerum reiciendis et sint ut. Fuga saepe aut.',

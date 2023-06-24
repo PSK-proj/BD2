@@ -1,29 +1,29 @@
 
-SQL*Loader: Release 21.0.0.0.0 - Production on Sun Jun 4 19:53:58 2023
+SQL*Loader: Release 21.0.0.0.0 - Production on So Cze 24 17:49:48 2023
 Version 21.3.0.0.0
 
 Copyright (c) 1982, 2021, Oracle and/or its affiliates.  All rights reserved.
 
-Control File:   ./Loader/dostawy.ctl
-Data File:      .\\Dane\\dostawy.csv
-  File processing option string: "str '\r\n'"
-  Bad File:     ./Loader/dostawy.bad
-  Discard File:  none specified
- 
- (Allow all discards)
+Plik sterujący:          ./Loader/dostawy.ctl
+Plik danych:             .\\Dane\\dostawy.csv
+  Napis opcji przetwarzania plików: "str '\r\n'"
+  Plik odrzutów:         ./Loader/dostawy.bad
+  Plik nieprzyjęc:  brak specyfikacji
 
-Number to load: ALL
-Number to skip: 0
-Errors allowed: 50
-Bind array:     250 rows, maximum of 1048576 bytes
-Continuation:    none specified
-Path used:      Conventional
+ (Zezwolenie na wszystkie nieprzyjęcia)
 
-Table DOSTAWY, loaded from every logical record.
-Insert option in effect for this table: INSERT
-TRAILING NULLCOLS option in effect
+Liczba do załadowania:   ALL
+Liczba do pominięcia: 0
+Dopuszczonych błędów: 50
+Zmienna tablicowa:        250 wierszy, maksymalnie 1048576 bajtów
+Kontynuacja:    brak specyfikacji
+Użyta ścieżka :      Konwencjonalny
 
-   Column Name                  Position   Len  Term Encl Datatype
+Tabela DOSTAWY, załadowano z każdego rekordu logicznego.
+Działa opcja wstawiania dla tej tabeli: INSERT
+opcja TRAILING NULLCOLS w użyciu
+
+   Nazwa kolumny               Pozycja    Dł.   Końc. Ogr. Typ danych
 ------------------------------ ---------- ----- ---- ---- ---------------------
 ID_DOSTAWY                          FIRST     *   ,       CHARACTER            
 ID_DOSTAWCY                          NEXT     *   ,       CHARACTER            
@@ -33,23 +33,23 @@ ILOSC                                NEXT     *   ,       CHARACTER
 DATA_DOSTAWY                         NEXT     *   ,       CHARACTER            
 
 
-Table DOSTAWY:
-  1000 Rows successfully loaded.
-  0 Rows not loaded due to data errors.
-  0 Rows not loaded because all WHEN clauses were failed.
-  0 Rows not loaded because all fields were null.
+Tabela DOSTAWY:
+  1000 Wiersze - załadowane pomyślnie.
+  0 Wiersze - nie załadowano wskutek błędów danych.
+  0 Wiersze - nie załadowano wskutek niepowodzenia wszystkich klauzul WHEN.
+  0 Wiersze - nie załadowano, ponieważ wszystkie pola miały wartość Null.
 
 
-Space allocated for bind array:                 387000 bytes(250 rows)
-Read   buffer bytes: 1048576
+Przestrzeń przydziel. dla zmiennej tablicowej:   387000 B (wierszy: 250)
+Odczytane bajty bufora:  1048576
 
-Total logical records skipped:          0
-Total logical records read:          1000
-Total logical records rejected:         0
-Total logical records discarded:        0
+Łączna liczba pominiętych rekordów logicznych:        0
+Łączna liczba odczytanych rekordów logicznych:     1000
+Łączna liczba odrzuconych rekordów logicznych:        0
+Łączna liczba nieprzyjętych rekordów logicznych:        0
 
-Run began on Sun Jun 04 19:53:58 2023
-Run ended on Sun Jun 04 19:53:59 2023
+Rozpoczęcie wykonania  So Cze 24 17:49:48 2023
+Zakończenie wykonania  So Cze 24 17:49:49 2023
 
-Elapsed time was:     00:00:00.31
-CPU time was:         00:00:00.22
+Całkowity czas:       00:00:00.14
+Czas CPU:             00:00:00.08

@@ -1,52 +1,53 @@
 
-SQL*Loader: Release 21.0.0.0.0 - Production on Sun Jun 4 19:53:39 2023
+SQL*Loader: Release 21.0.0.0.0 - Production on So Cze 24 17:49:47 2023
 Version 21.3.0.0.0
 
 Copyright (c) 1982, 2021, Oracle and/or its affiliates.  All rights reserved.
 
-Control File:   ./Loader/uslugi.ctl
-Data File:      .\\Dane\\uslugi.csv
-  File processing option string: "str '\r\n'"
-  Bad File:     ./Loader/uslugi.bad
-  Discard File:  none specified
- 
- (Allow all discards)
+Plik sterujący:          ./Loader/uslugi.ctl
+Plik danych:             .\\Dane\\uslugi.csv
+  Napis opcji przetwarzania plików: "str '\r\n'"
+  Plik odrzutów:         ./Loader/uslugi.bad
+  Plik nieprzyjęc:  brak specyfikacji
 
-Number to load: ALL
-Number to skip: 0
-Errors allowed: 50
-Bind array:     250 rows, maximum of 1048576 bytes
-Continuation:    none specified
-Path used:      Conventional
+ (Zezwolenie na wszystkie nieprzyjęcia)
 
-Table USLUGI, loaded from every logical record.
-Insert option in effect for this table: INSERT
-TRAILING NULLCOLS option in effect
+Liczba do załadowania:   ALL
+Liczba do pominięcia: 0
+Dopuszczonych błędów: 50
+Zmienna tablicowa:        250 wierszy, maksymalnie 1048576 bajtów
+Kontynuacja:    brak specyfikacji
+Użyta ścieżka :      Konwencjonalny
 
-   Column Name                  Position   Len  Term Encl Datatype
+Tabela USLUGI, załadowano z każdego rekordu logicznego.
+Działa opcja wstawiania dla tej tabeli: INSERT
+opcja TRAILING NULLCOLS w użyciu
+
+   Nazwa kolumny               Pozycja    Dł.   Końc. Ogr. Typ danych
 ------------------------------ ---------- ----- ---- ---- ---------------------
 ID_USLUGI                           FIRST     *   ,       CHARACTER            
 NAZWA                                NEXT     *   ,       CHARACTER            
 DOPLATA                              NEXT     *   ,       CHARACTER            
+    Kod SQL dla kolumny : "TO_NUMBER(:doplata, '99999999.99', 'NLS_NUMERIC_CHARACTERS='',.''')"
 
 
-Table USLUGI:
-  100 Rows successfully loaded.
-  0 Rows not loaded due to data errors.
-  0 Rows not loaded because all WHEN clauses were failed.
-  0 Rows not loaded because all fields were null.
+Tabela USLUGI:
+  100 Wiersze - załadowane pomyślnie.
+  0 Wiersze - nie załadowano wskutek błędów danych.
+  0 Wiersze - nie załadowano wskutek niepowodzenia wszystkich klauzul WHEN.
+  0 Wiersze - nie załadowano, ponieważ wszystkie pola miały wartość Null.
 
 
-Space allocated for bind array:                 193500 bytes(250 rows)
-Read   buffer bytes: 1048576
+Przestrzeń przydziel. dla zmiennej tablicowej:   193500 B (wierszy: 250)
+Odczytane bajty bufora:  1048576
 
-Total logical records skipped:          0
-Total logical records read:           100
-Total logical records rejected:         0
-Total logical records discarded:        0
+Łączna liczba pominiętych rekordów logicznych:        0
+Łączna liczba odczytanych rekordów logicznych:      100
+Łączna liczba odrzuconych rekordów logicznych:        0
+Łączna liczba nieprzyjętych rekordów logicznych:        0
 
-Run began on Sun Jun 04 19:53:39 2023
-Run ended on Sun Jun 04 19:53:40 2023
+Rozpoczęcie wykonania  So Cze 24 17:49:47 2023
+Zakończenie wykonania  So Cze 24 17:49:47 2023
 
-Elapsed time was:     00:00:00.31
-CPU time was:         00:00:00.17
+Całkowity czas:       00:00:00.13
+Czas CPU:             00:00:00.08

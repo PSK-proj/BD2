@@ -7,5 +7,5 @@ TRAILING NULLCOLS
 (
   id_uslugi,
   nazwa,
-  doplata
+  doplata CHAR "TO_NUMBER(:doplata, '99999999.99', 'NLS_NUMERIC_CHARACTERS='',.''')"
 )

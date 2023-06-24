@@ -7,5 +7,5 @@ TRAILING NULLCOLS
 (
   id_gatunku,
   nazwa,
-  cena
+  cena CHAR "TO_NUMBER(:cena, '99999999.99', 'NLS_NUMERIC_CHARACTERS='',.''')"
 )
