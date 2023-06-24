@@ -27,10 +27,11 @@ BEGIN
   -- Wprowadzanie danych do Dim_Pracownik
   INSERT INTO Dim_Pracownik
     (id_pracownika, imie, nazwisko, stanowisko, data_zatrudnienia)
-  SELECT p.id_pracownika, dp.imie, dp.nazwisko, p.stanowisko, z.data_przyjecia
+  SELECT p.id_pracownika, dp.imie, dp.nazwisko, p.stanowisko, MAX(z.data_przyjecia)
   FROM pracownicy p
     JOIN dane_personalne dp ON p.id_danych = dp.id_danych
-    JOIN zatrudnienia z ON p.id_pracownika = z.id_pracownika;
+    JOIN zatrudnienia z ON p.id_pracownika = z.id_pracownika
+  GROUP BY p.id_pracownika, dp.imie, dp.nazwisko, p.stanowisko;
 
   -- Wprowadzanie danych do Dim_Klient
   INSERT INTO Dim_Klient
@@ -42,7 +43,7 @@ BEGIN
   -- Wprowadzanie danych do Fakt_Sprzedazy
   INSERT INTO Fakt_Sprzedazy
     (id, id_kwiaciarni, id_gatunku, id_uslugi, id_pracownika, id_klienta, ilosc, cena, data_sprzedazy)
-  SELECT r.id_rachunku, r.id_kwiaciarni, pp.id_gatunku, pp.id_uslugi, r.id_pracownika, r.id_klienta, pp.ilosc, g.cena, r.data_sprzedazy
+  SELECT fakt_sprzedazy_seq.NEXTVAL, r.id_kwiaciarni, pp.id_gatunku, pp.id_uslugi, r.id_pracownika, r.id_klienta, pp.ilosc, g.cena, r.data_sprzedazy
   FROM rachunki r
     JOIN pozycja_paragonu pp ON r.id_rachunku = pp.id_rachunku
     JOIN gatunki g ON pp.id_gatunku = g.id_gatunku;

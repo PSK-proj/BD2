@@ -1,3 +1,7 @@
+CREATE SEQUENCE fakt_sprzedazy_seq
+    START WITH 1
+    INCREMENT BY 1;
+
 DROP TABLE Fakt_Sprzedazy;
 DROP TABLE Dim_Kwiaciarnia;
 DROP TABLE Dim_Usluga;
