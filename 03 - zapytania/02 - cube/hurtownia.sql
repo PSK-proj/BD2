@@ -16,10 +16,10 @@ GROUP BY CUBE (k.nazwa, g.nazwa, u.nazwa);
 -- Sens praktyczny: Pozwala na szczegółową analizę sprzedaży według kwiaciarni, gatunków i usług, co jest przydatne do identyfikacji wzorców sprzedaży i planowania strategii biznesowych.
 
 -- Suma sprzedaży w rozbiciu na kwiaciarnie, miasta i gatunki.
-SELECT k.nazwa AS kwiaciarnia, a.miasto, g.nazwa AS gatunek, SUM(f.cena * f.ilosc) AS total_sales
+SELECT k.nazwa AS kwiaciarnia, m.nazwa_miasta AS miasto, g.nazwa AS gatunek, SUM(f.cena * f.ilosc) AS total_sales
 FROM Fakt_Sprzedazy f
   JOIN Dim_Kwiaciarnia k ON f.id_kwiaciarni = k.id_kwiaciarni
-  JOIN Dim_Adres a ON k.id_adresu = a.id_adresu
+  JOIN Dim_Miasto m ON k.id_miasta = m.id_miasta
   JOIN Dim_Gatunek g ON f.id_gatunku = g.id_gatunku
-GROUP BY CUBE (k.nazwa, a.miasto, g.nazwa);
+GROUP BY CUBE (k.nazwa, m.nazwa_miasta, g.nazwa);
 -- Sens praktyczny: Pomaga w zrozumieniu, jak lokalizacja i gatunki kwiatów wpływają na wyniki sprzedaży, co jest użyteczne przy podejmowaniu decyzji dotyczących lokalizacji sklepów i oferty produktów.
