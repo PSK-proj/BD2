@@ -1,5 +1,5 @@
 -- Suma sprzedaży dla każdej kwiaciarni i gatunku kwiatu w danym miesiącu.
-SELECT k.nazwa AS kwiaciarnia, g.nazwa AS gatunek, EXTRACT(MONTH FROM f.data_sprzedazy) AS miesiac, SUM(f.cena * f.ilosc) AS total_sales
+SELECT k.nazwa AS kwiaciarnia, g.nazwa AS gatunek, EXTRACT(MONTH FROM f.data_sprzedazy) AS miesiac, SUM(f.cena) AS total_sales
 FROM Fakt_Sprzedazy f
   JOIN Dim_Kwiaciarnia k ON f.id_kwiaciarni = k.id_kwiaciarni
   JOIN Dim_Gatunek g ON f.id_gatunku = g.id_gatunku
