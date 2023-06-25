@@ -9,8 +9,8 @@ FROM rachunki r
 -- Średnia cena sprzedaży dla każdego gatunku kwiatu w danym miesiącu oraz w całym roku.
 SELECT g.nazwa AS gatunek,
   EXTRACT(MONTH FROM r.data_sprzedazy) AS miesiac,
-  AVG(g.cena) OVER (PARTITION BY g.nazwa ORDER BY EXTRACT(MONTH FROM r.data_sprzedazy) RANGE BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) AS yearly_avg,
-  AVG(g.cena) OVER (PARTITION BY g.nazwa ORDER BY EXTRACT(MONTH FROM r.data_sprzedazy)) AS monthly_avg
+  AVG(g.cena) OVER (PARTITION BY g.nazwa ORDER BY EXTRACT(MONTH FROM r.data_sprzedazy) RANGE BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) AS srednia_roczna,
+  AVG(g.cena) OVER (PARTITION BY g.nazwa ORDER BY EXTRACT(MONTH FROM r.data_sprzedazy)) AS srednia_miesieczna
 FROM pozycja_paragonu pp
   JOIN rachunki r ON pp.id_rachunku = r.id_rachunku
   JOIN gatunki g ON pp.id_gatunku = g.id_gatunku;

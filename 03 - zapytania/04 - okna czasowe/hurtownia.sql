@@ -9,8 +9,8 @@ FROM Fakt_Sprzedazy f
 -- Średnia cena sprzedaży dla każdego gatunku kwiatu w danym miesiącu oraz w całym roku.
 SELECT g.nazwa AS gatunek,
   EXTRACT(MONTH FROM f.data_sprzedazy) AS miesiac,
-  AVG(f.cena) OVER (PARTITION BY g.nazwa ORDER BY EXTRACT(MONTH FROM f.data_sprzedazy) RANGE BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) AS yearly_avg,
-  AVG(f.cena) OVER (PARTITION BY g.nazwa ORDER BY EXTRACT(MONTH FROM f.data_sprzedazy)) AS monthly_avg
+  AVG(f.cena) OVER (PARTITION BY g.nazwa ORDER BY EXTRACT(MONTH FROM f.data_sprzedazy) RANGE BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) AS srednia_roczna,
+  AVG(f.cena) OVER (PARTITION BY g.nazwa ORDER BY EXTRACT(MONTH FROM f.data_sprzedazy)) AS srednia_miesieczna
 FROM Fakt_Sprzedazy f
   JOIN Dim_Gatunek g ON f.id_gatunku = g.id_gatunku;
 -- Sens praktyczny: Umożliwia analizę popularności gatunków kwiatów w różnych okresach, co jest przydatne przy planowaniu zakupów i ustalaniu strategii cenowych.

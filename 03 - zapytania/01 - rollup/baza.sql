@@ -1,5 +1,5 @@
 -- Pozwala zrozumieć, jakie jest rozkład ilości produktów w magazynach w zależności od miasta.
-SELECT miasto, SUM(ilosc) AS total_quantity
+SELECT miasto, SUM(ilosc) AS calkowita_ilosc
 FROM adresy
   JOIN kwiaciarnie ON adresy.id_adresu = kwiaciarnie.id_adresu
   JOIN magazyny ON kwiaciarnie.id_kwiaciarni = magazyny.id_kwiaciarni
@@ -7,7 +7,7 @@ FROM adresy
 GROUP BY ROLLUP(miasto);
 
 -- Pozwala na analizę sumy sprzedaży w poszczególnych kwiaciarniach według lokalizacji (miasto).
-SELECT miasto, nazwa, SUM(suma_pln) AS total_sales
+SELECT miasto, nazwa, SUM(suma_pln) AS calkowita_sprzedaz
 FROM adresy
   JOIN kwiaciarnie ON adresy.id_adresu = kwiaciarnie.id_adresu
   JOIN rachunki ON kwiaciarnie.id_kwiaciarni = rachunki.id_kwiaciarni

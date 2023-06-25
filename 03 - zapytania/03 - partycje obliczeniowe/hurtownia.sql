@@ -1,5 +1,5 @@
 -- Suma sprzedaży dla każdej kwiaciarni i gatunku kwiatu w danym miesiącu.
-SELECT k.nazwa AS kwiaciarnia, g.nazwa AS gatunek, EXTRACT(MONTH FROM f.data_sprzedazy) AS miesiac, SUM(f.cena) AS total_sales
+SELECT k.nazwa AS kwiaciarnia, g.nazwa AS gatunek, EXTRACT(MONTH FROM f.data_sprzedazy) AS miesiac, SUM(f.cena) AS calkowita_sprzedaz
 FROM Fakt_Sprzedazy f
   JOIN Dim_Kwiaciarnia k ON f.id_kwiaciarni = k.id_kwiaciarni
   JOIN Dim_Gatunek g ON f.id_gatunku = g.id_gatunku
@@ -7,7 +7,7 @@ GROUP BY k.nazwa, g.nazwa, EXTRACT(MONTH FROM f.data_sprzedazy);
 -- Sens praktyczny: Pozwala na analizę, jakie gatunki kwiatów przynoszą największe przychody w poszczególnych kwiaciarniach, co jest przydatne przy planowaniu oferty.
 
 -- Średnia cena sprzedaży dla każdego pracownika i usługi w danym miesiącu.
-SELECT p.imie || ' ' || p.nazwisko AS pracownik, u.nazwa AS usluga, EXTRACT(MONTH FROM f.data_sprzedazy) AS miesiac, AVG(f.cena) AS average_price
+SELECT p.imie || ' ' || p.nazwisko AS pracownik, u.nazwa AS usluga, EXTRACT(MONTH FROM f.data_sprzedazy) AS miesiac, AVG(f.cena) AS srednia_cena
 FROM Fakt_Sprzedazy f
   JOIN Dim_Pracownik p ON f.id_pracownika = p.id_pracownika
   JOIN Dim_Usluga u ON f.id_uslugi = u.id_uslugi

@@ -1,5 +1,5 @@
 -- Suma sprzedaży w rozbiciu na gatunki i usługi.
-SELECT g.nazwa AS gatunek, u.nazwa AS usluga, SUM(g.cena * pp.ilosc + (CASE WHEN pp.id_uslugi IS NOT NULL THEN u.doplata ELSE 0 END) * pp.ilosc) AS total_sales
+SELECT g.nazwa AS gatunek, u.nazwa AS usluga, SUM(g.cena * pp.ilosc + (CASE WHEN pp.id_uslugi IS NOT NULL THEN u.doplata ELSE 0 END) * pp.ilosc) AS calkowita_sprzedaz
 FROM pozycja_paragonu pp
   JOIN gatunki g ON pp.id_gatunku = g.id_gatunku
   LEFT JOIN uslugi u ON pp.id_uslugi = u.id_uslugi
@@ -8,7 +8,7 @@ GROUP BY ROLLUP (g.nazwa, u.nazwa);
 -- Sens praktyczny: Umożliwia analizę sprzedaży według kombinacji gatunków kwiatów i usług, co pomaga w planowaniu i optymalizacji oferty.
 
 -- Suma sprzedaży w rozbiciu na kwiaciarnie, gatunki i usługi.
-SELECT k.nazwa AS kwiaciarnia, g.nazwa AS gatunek, u.nazwa AS usluga, SUM(g.cena * pp.ilosc + (CASE WHEN pp.id_uslugi IS NOT NULL THEN u.doplata ELSE 0 END) * pp.ilosc) AS total_sales
+SELECT k.nazwa AS kwiaciarnia, g.nazwa AS gatunek, u.nazwa AS usluga, SUM(g.cena * pp.ilosc + (CASE WHEN pp.id_uslugi IS NOT NULL THEN u.doplata ELSE 0 END) * pp.ilosc) AS calkowita_sprzedaz
 FROM pozycja_paragonu pp
   JOIN gatunki g ON pp.id_gatunku = g.id_gatunku
   LEFT JOIN uslugi u ON pp.id_uslugi = u.id_uslugi
@@ -18,7 +18,7 @@ GROUP BY CUBE (k.nazwa, g.nazwa, u.nazwa);
 -- Sens praktyczny: Pozwala na szczegółową analizę sprzedaży według kwiaciarni, gatunków i usług, co jest przydatne do identyfikacji wzorców sprzedaży i planowania strategii biznesowych.
 
 -- Suma sprzedaży w rozbiciu na kwiaciarnie, miasta i gatunki.
-SELECT k.nazwa AS kwiaciarnia, a.miasto AS miasto, g.nazwa AS gatunek, SUM(g.cena * pp.ilosc) AS total_sales
+SELECT k.nazwa AS kwiaciarnia, a.miasto AS miasto, g.nazwa AS gatunek, SUM(g.cena * pp.ilosc) AS calkowita_sprzedaz
 FROM pozycja_paragonu pp
   JOIN gatunki g ON pp.id_gatunku = g.id_gatunku
   JOIN rachunki r ON pp.id_rachunku = r.id_rachunku

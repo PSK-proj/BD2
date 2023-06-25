@@ -2,7 +2,7 @@
 SELECT k.nazwa AS kwiaciarnia,
   g.nazwa AS gatunek,
   EXTRACT(MONTH FROM r.data_sprzedazy) AS miesiac,
-  SUM(g.cena * pp.ilosc) AS total_sales
+  SUM(g.cena * pp.ilosc) AS calkowita_sprzedaz
 FROM rachunki r
   JOIN pozycja_paragonu pp ON r.id_rachunku = pp.id_rachunku
   JOIN gatunki g ON pp.id_gatunku = g.id_gatunku
@@ -14,7 +14,7 @@ GROUP BY k.nazwa, g.nazwa, EXTRACT(MONTH FROM r.data_sprzedazy);
 SELECT dp.imie || ' ' || dp.nazwisko AS pracownik,
   u.nazwa AS usluga,
   EXTRACT(MONTH FROM r.data_sprzedazy) AS miesiac,
-  AVG(u.doplata * pp.ilosc) AS average_price
+  AVG(u.doplata * pp.ilosc) AS srednia_cena
 FROM rachunki r
   JOIN pozycja_paragonu pp ON r.id_rachunku = pp.id_rachunku
   JOIN uslugi u ON pp.id_uslugi = u.id_uslugi

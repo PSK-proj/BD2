@@ -1,6 +1,6 @@
 -- Ranga pracowników w kwiaciarniach na podstawie ilości sprzedanych kwiatów:
 WITH
-  RankedSales
+  RangaSprzedazy
   AS
   (
     SELECT
@@ -26,7 +26,7 @@ SELECT
   ilosc_sprzedanych_kwiatow,
   ranga
 FROM
-  RankedSales;
+  RangaSprzedazy;
 -- Sens praktyczny: Pozwala na porównanie wyników sprzedaży pracowników w ramach danej kwiaciarni, co może być wykorzystane do motywowania personelu.
 
 -- Przydzielanie klientom poziomów lojalnościowych na podstawie wydanej kwoty:
@@ -48,7 +48,7 @@ GROUP BY
 
 -- Znalezienie 3 najpopularniejszych gatunków kwiatów w każdej kwiaciarni:
 WITH
-  RankedFlowers
+  RangaGatunku
   AS
   (
     SELECT
@@ -71,7 +71,7 @@ SELECT
   ilosc_sprzedanych,
   ranga
 FROM
-  RankedFlowers
+  RangaGatunku
 WHERE
       ranga <= 3
 ORDER BY
