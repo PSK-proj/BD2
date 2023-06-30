@@ -6,7 +6,6 @@ FIELDS TERMINATED BY ','
 TRAILING NULLCOLS
 (
   id_danych,
-  id_adresu,
   nazwisko,
   imie,
   PESEL,

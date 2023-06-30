@@ -1,13 +1,13 @@
 
-SQL*Loader: Release 21.0.0.0.0 - Production on So Cze 24 17:49:48 2023
+SQL*Loader: Release 21.0.0.0.0 - Production on So Lip 1 01:19:14 2023
 Version 21.3.0.0.0
 
 Copyright (c) 1982, 2021, Oracle and/or its affiliates.  All rights reserved.
 
-Plik sterujący:          ./Loader/pozycja_paragonu.ctl
-Plik danych:             .\\Dane\\pozycja_paragonu.csv
+Plik sterujący:          ./Loader/pozycja_paragonu_usluga.ctl
+Plik danych:             .\\Dane\\pozycja_paragonu_usluga.csv
   Napis opcji przetwarzania plików: "str '\r\n'"
-  Plik odrzutów:         ./Loader/pozycja_paragonu.bad
+  Plik odrzutów:         ./Loader/pozycja_paragonu_usluga.bad
   Plik nieprzyjęc:  brak specyfikacji
 
  (Zezwolenie na wszystkie nieprzyjęcia)
@@ -19,7 +19,7 @@ Zmienna tablicowa:        250 wierszy, maksymalnie 1048576 bajtów
 Kontynuacja:    brak specyfikacji
 Użyta ścieżka :      Konwencjonalny
 
-Tabela POZYCJA_PARAGONU, załadowano z każdego rekordu logicznego.
+Tabela POZYCJA_PARAGONU_USLUGA, załadowano z każdego rekordu logicznego.
 Działa opcja wstawiania dla tej tabeli: INSERT
 opcja TRAILING NULLCOLS w użyciu
 
@@ -27,19 +27,18 @@ opcja TRAILING NULLCOLS w użyciu
 ------------------------------ ---------- ----- ---- ---- ---------------------
 ID_POZYCJI_PARAGONU                 FIRST     *   ,       CHARACTER            
 ID_RACHUNKU                          NEXT     *   ,       CHARACTER            
-ID_GATUNKU                           NEXT     *   ,       CHARACTER            
 ID_USLUGI                            NEXT     *   ,       CHARACTER            
 ILOSC                                NEXT     *   ,       CHARACTER            
 
 
-Tabela POZYCJA_PARAGONU:
+Tabela POZYCJA_PARAGONU_USLUGA:
   1000 Wiersze - załadowane pomyślnie.
   0 Wiersze - nie załadowano wskutek błędów danych.
   0 Wiersze - nie załadowano wskutek niepowodzenia wszystkich klauzul WHEN.
   0 Wiersze - nie załadowano, ponieważ wszystkie pola miały wartość Null.
 
 
-Przestrzeń przydziel. dla zmiennej tablicowej:   322500 B (wierszy: 250)
+Przestrzeń przydziel. dla zmiennej tablicowej:   258000 B (wierszy: 250)
 Odczytane bajty bufora:  1048576
 
 Łączna liczba pominiętych rekordów logicznych:        0
@@ -47,8 +46,8 @@ Odczytane bajty bufora:  1048576
 Łączna liczba odrzuconych rekordów logicznych:        0
 Łączna liczba nieprzyjętych rekordów logicznych:        0
 
-Rozpoczęcie wykonania  So Cze 24 17:49:48 2023
-Zakończenie wykonania  So Cze 24 17:49:48 2023
+Rozpoczęcie wykonania  So Lip 01 01:19:14 2023
+Zakończenie wykonania  So Lip 01 01:19:14 2023
 
-Całkowity czas:       00:00:00.14
-Czas CPU:             00:00:00.08
+Całkowity czas:       00:00:00.16
+Czas CPU:             00:00:00.09

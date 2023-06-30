@@ -2,44 +2,43 @@
 
 ## Tabela powiązań
 
-| **Encja 1**       | **Encja 2**        | **Typ związku** | **Powód**                                                                       |
-| ----------------- | ------------------ | --------------- | ------------------------------------------------------------------------------- |
-| Adresy            | Kwiaciarnie        | jeden do jeden  | Każda kwiaciarnia ma jeden adres.                                               |
-| Adresy            | DanePersonalne     | jeden do jeden  | Każde dane personalne mają jeden adres.                                         |
-| Adresy            | Dostawcy           | jeden do jeden  | Każdy dostawca ma jeden adres.                                                  |
-| Adresy            | DostawyKlientow    | jeden do jeden  | Każda dostawa do klienta ma jeden adres dostawy.                                |
-| Kwiaciarnie       | Magazyny           | jeden do jeden  | Każda kwiaciarnia ma jeden magazyn.                                             |
-| Kwiaciarnie       | Zatrudnienia       | jeden do wielu  | Kwiaciarnia może mieć wielu zatrudnionych pracowników.                          |
-| Kwiaciarnie       | Rachunki           | jeden do wielu  | Kwiaciarnia może wystawić wiele rachunków.                                      |
-| Kwiaciarnie       | KwiaciarnieUslugi  | jeden do wielu  | Kwiaciarnia może oferować wiele usług.                                          |
-| Magazyny          | MagazynyGatunki    | jeden do wielu  | W jednym magazynie może być wiele gatunków kwiatów.                             |
-| Magazyny          | Dostawy            | jeden do wielu  | Do jednego magazynu może przypadać wiele dostaw.                                |
-| Gatunki           | MagazynyGatunki    | jeden do wielu  | Jeden gatunek kwiatów może być w wielu magazynach.                              |
-| Gatunki           | PozycjaParagonu    | jeden do wielu  | Jeden gatunek kwiatów może wystąpić na wielu pozycjach paragonu.                |
-| Gatunki           | Dostawy            | jeden do wielu  | Jeden gatunek kwiatów może być dostarczany wielokrotnie.                        |
-| Gatunki           | ZamowieniaPozycje  | jeden do wielu  | Jeden gatunek kwiatów może wystąpić w wielu pozycjach zamówień.                 |
-| Gatunki           | OfertySpecjalne    | jeden do wielu  | Jeden gatunek kwiatów może być częścią wielu ofert specjalnych.                 |
-| Uslugi            | KwiaciarnieUslugi  | jeden do wielu  | Jedna usługa może być oferowana w wielu kwiaciarniach.                          |
-| Uslugi            | PozycjaParagonu    | jeden do wielu  | Jedna usługa może wystąpić na wielu pozycjach paragonu.                         |
-| Uslugi            | ZamowieniaPozycje  | jeden do wielu  | Jedna usługa może wystąpić w wielu pozycjach zamówień.                          |
-| Uslugi            | OfertySpecjalne    | jeden do wielu  | Jedna usługa może być częścią wielu ofert specjalnych.                          |
-| DanePersonalne    | Pracownicy         | jeden do jeden  | Każdy pracownik ma swoje dane personalne.                                       |
-| DanePersonalne    | Klienci            | jeden do jeden  | Każdy klient ma swoje dane personalne.                                          |
-| Pracownicy        | Zatrudnienia       | jeden do wielu  | Pracownik może być zatrudniony w wielu miejscach.                               |
-| Pracownicy        | Rachunki           | jeden do wielu  | Pracownik może wystawić wiele rachunków.                                        |
-| Klienci           | Rachunki           | jeden do wielu  | Klient może otrzymać wiele rachunków.                                           |
-| Klienci           | Zamowienia         | jeden do wielu  | Klient może złożyć wiele zamówień.                                              |
-| Klienci           | DostawyKlientow    | jeden do wielu  | Klient może otrzymać wiele dostaw.                                              |
-| Klienci           | Reklamacje         | jeden do wielu  | Klient może złożyć wiele reklamacji.                                            |
-| Rachunki          | PozycjaParagonu    | jeden do wielu  | Na jeden rachunek może przypadać wiele pozycji.                                 |
-| Rachunki          | Reklamacje         | jeden do wielu  | Na jeden rachunek może przypadać wiele reklamacji.                              |
-| Dostawcy          | Dostawy            | jeden do wielu  | Dostawca może dostarczyć wiele partii kwiatów.                                  |
-| Dostawy           | Magazyny i Gatunki | jeden do jeden  | Każda dostawa jest powiązana z jednym gatunkiem kwiatów w magazynie.            |
-| Zamowienia        | ZamowieniaPozycje  | jeden do wielu  | Na jedno zamówienie może przypadać wiele pozycji.                               |
-| Zamowienia        | DostawyKlientow    | jeden do jeden  | Każde zamówienie ma jedną dostawę do klienta.                                   |
-| Zamowienia        | Reklamacje         | jeden do wielu  | Na jedno zamówienie może przypadać wiele reklamacji.                            |
-| ZamowieniaPozycje | Magazyny i Gatunki | jeden do jeden  | Każda pozycja zamówienia jest powiązana z jednym gatunkiem kwiatów w magazynie. |
-| OfertySpecjalne   | PozycjaParagonu    | jeden do wielu  | Jedna oferta specjalna może wystąpić na wielu pozycjach paragonu.               |
+| **Encja 1**     | **Encja 2**              | **Typ związku** | **Powód**                                                           |
+| --------------- | ------------------------ | --------------- | ------------------------------------------------------------------- |
+| adresy          | kwiaciarnie              | jeden do jeden  | Każda kwiaciarnia ma jeden adres.                                   |
+| adresy          | dostawcy                 | jeden do jeden  | Każdy dostawca ma jeden adres.                                      |
+| adresy          | dane_personalne_adresy   | jeden do wielu  | Jednym adresem może być powiązanych wiele danych personalnych.      |
+| kwiaciarnie     | magazyny                 | jeden do jeden  | Każda kwiaciarnia ma jeden magazyn.                                 |
+| kwiaciarnie     | kwiaciarnieuslugi        | jeden do wielu  | Każda kwiaciarnia może oferować wiele usług.                        |
+| kwiaciarnie     | zatrudnienia             | jeden do wielu  | W jednej kwiaciarni może być zatrudnionych wielu pracowników.       |
+| kwiaciarnie     | rachunki                 | jeden do wielu  | Każda kwiaciarnia może wystawić wiele rachunków.                    |
+| magazyny        | magazynygatunki          | jeden do wielu  | W jednym magazynie może być przechowywanych wiele gatunków kwiatów. |
+| magazyny        | dostawy                  | jeden do wielu  | Do jednego magazynu może być dostarczonych wiele dostaw.            |
+| gatunki         | magazynygatunki          | jeden do wielu  | Jeden gatunek kwiatu może być przechowywany w wielu magazynach.     |
+| gatunki         | pozycja_paragonu_gatunek | jeden do wielu  | Jeden gatunek kwiatu może być na wielu pozycjach paragonu.          |
+| gatunki         | dostawy                  | jeden do wielu  | Jeden gatunek kwiatu może być dostarczany w wielu dostawach.        |
+| gatunki         | zamowieniapozycje        | jeden do wielu  | Jeden gatunek kwiatu może być na wielu pozycjach zamówienia.        |
+| gatunki         | oferty_specjalne         | jeden do wielu  | Jeden gatunek kwiatu może być częścią wielu ofert specjalnych.      |
+| uslugi          | kwiaciarnieuslugi        | jeden do wielu  | Jedna usługa może być oferowana w wielu kwiaciarniach.              |
+| uslugi          | pozycja_paragonu_usluga  | jeden do wielu  | Jedna usługa może być na wielu pozycjach paragonu.                  |
+| uslugi          | zamowieniapozycje        | jeden do wielu  | Jedna usługa może być na wielu pozycjach zamówienia.                |
+| uslugi          | oferty_specjalne         | jeden do wielu  | Jedna usługa może być częścią wielu ofert specjalnych.              |
+| dostawcy        | dostawy                  | jeden do wielu  | Każdy dostawca może dokonać wielu dostaw do magazynu.               |
+| dane_personalne | dane_personalne_adresy   | jeden do wielu  | Jedne dane personalne mogą być powiązane z wieloma adresami.        |
+| dane_personalne | pracownicy               | jeden do jeden  | Każdy pracownik ma jedne dane personalne.                           |
+| dane_personalne | klienci                  | jeden do jeden  | Każdy klient ma jedne dane personalne.                              |
+| pracownicy      | zatrudnienia             | jeden do wielu  | Jeden pracownik może być zatrudniony w wielu kwiaciarniach.         |
+| pracownicy      | rachunki                 | jeden do wielu  | Jeden pracownik może wystawić wiele rachunków.                      |
+| klienci         | rachunki                 | jeden do wielu  | Jeden klient może otrzymać wiele rachunków.                         |
+| klienci         | zamowienia               | jeden do wielu  | Jeden klient może złożyć wiele zamówień.                            |
+| klienci         | dostawy_klientow         | jeden do wielu  | Jeden klient może otrzymać wiele dostaw.                            |
+| klienci         | reklamacje               | jeden do wielu  | Jeden klient może złożyć wiele reklamacji.                          |
+| rachunki        | pozycja_paragonu_gatunek | jeden do wielu  | Jeden rachunek może zawierać wiele pozycji z gatunkami kwiatów.     |
+| rachunki        | pozycja_paragonu_usluga  | jeden do wielu  | Jeden rachunek może zawierać wiele pozycji z usługami.              |
+| rachunki        | reklamacje               | jeden do jeden  | Każda reklamacja jest powiązana z jednym rachunkiem.                |
+| zamowienia      | klienci                  | jeden do wielu  | Klient może mieć kilka zamówień.                                    |
+| zamowienia      | zamowieniapozycje        | jeden do wielu  | Jedno zamówienie może zawierać wiele pozycji (produktów lub usług). |
+| zamowienia      | dostawy_klientow         | jeden do jeden  | Każde zamówienie może mieć przypisaną jedną dostawę do klienta.     |
+| zamowienia      | reklamacje               | jeden do jeden  | Każde zamówienie może być podstawą do jednej reklamacji.            |
 
 ## Opis elementów modelu
 
@@ -136,20 +135,30 @@ Zawiera informacje o usługach oferowanych przez poszczególne kwiaciarnie.
 
 Zawiera podstawowe dane personalne osób związanych z kwiaciarnią (klienci, pracownicy).
 
-| **Nazwa** | **Klucz główny** | **Klucz obcy** | **Unique** | **NULLable** | **Typ/Dziedzina** | **Opis**             |
-| --------- | ---------------- | -------------- | ---------- | ------------ | ----------------- | -------------------- |
-| id_danych | Tak              | Nie            | Tak        | Nie          | NUMBER            | Identyfikator        |
-| id_adresu | Nie              | Tak (Adresy)   | Nie        | Nie          | NUMBER            | Klucz obcy do adresu |
-| nazwisko  | Nie              | Nie            | Nie        | Nie          | VARCHAR2(30)      | Nazwisko             |
-| imie      | Nie              | Nie            | Tak        | Tak          | VARCHAR2(30)      | Imię                 |
-| PESEL     | Nie              | Nie            | Tak        | Tak          | NUMBER(11)        | Numer PESEL          |
-| NIP       | Nie              | Nie            | Tak        | Tak          | NUMBER(10)        | Numer NIP            |
-| telefon   | Nie              | Nie            | Tak        | Tak          | VARCHAR2(50)      | Numer telefonu       |
-| email     | Nie              | Nie            | Tak        | Tak          | VARCHAR2(50)      | Adres email          |
+| **Nazwa** | **Klucz główny** | **Klucz obcy** | **Unique** | **NULLable** | **Typ/Dziedzina** | **Opis**       |
+| --------- | ---------------- | -------------- | ---------- | ------------ | ----------------- | -------------- |
+| id_danych | Tak              | Nie            | Tak        | Nie          | NUMBER            | Identyfikator  |
+| nazwisko  | Nie              | Nie            | Nie        | Nie          | VARCHAR2(30)      | Nazwisko       |
+| imie      | Nie              | Nie            | Tak        | Tak          | VARCHAR2(30)      | Imię           |
+| PESEL     | Nie              | Nie            | Tak        | Tak          | NUMBER(11)        | Numer PESEL    |
+| NIP       | Nie              | Nie            | Tak        | Tak          | NUMBER(10)        | Numer NIP      |
+| telefon   | Nie              | Nie            | Tak        | Tak          | VARCHAR2(50)      | Numer telefonu |
+| email     | Nie              | Nie            | Tak        | Tak          | VARCHAR2(50)      | Adres email    |
 
-### 9. Pracownicy
+### 9. Dane_personalneAdresy
 
 #### Opis 9
+
+Zawiera informacje o adresach połączonych z danymi personalnymi.
+
+| **Nazwa** | **Klucz główny** | **Klucz obcy**        | **Unique** | **NULLable** | **Typ/Dziedzina** | **Opis**      |
+| --------- | ---------------- | --------------------- | ---------- | ------------ | ----------------- | ------------- |
+| id_danych | Tak              | Tak (Dane_personalne) | Tak        | Nie          | NUMBER            | Identyfikator |
+| id_adresu | Tak              | Tak (Adresy)          | Tak        | Nie          | NUMBER            | Identyfikator |
+
+### 10. Pracownicy
+
+#### Opis 10
 
 Zawiera informacje o pracownikach kwiaciarni.
 
@@ -159,9 +168,9 @@ Zawiera informacje o pracownikach kwiaciarni.
 | id_danych     | Nie              | Tak (Dane_personalne) | Nie        | Nie          | NUMBER            | Klucz obcy do danych personalnych |
 | stanowisko    | Nie              | Nie                   | Nie        | Tak          | VARCHAR2(50)      | Stanowisko pracownika             |
 
-### 10. Zatrudnienia
+### 11. Zatrudnienia
 
-#### Opis 10
+#### Opis 11
 
 Zawiera informacje o zatrudnieniach pracowników w kwiaciarniach.
 
@@ -173,9 +182,9 @@ Zawiera informacje o zatrudnieniach pracowników w kwiaciarniach.
 | data_zatrudnienia | Nie              | Nie               | Nie        | Nie          | DATE              | Data zatrudnienia        |
 | data_zwolnienia   | Nie              | Nie               | Nie        | Tak          | DATE              | Data zwolnienia          |
 
-### 11. Klienci
+### 12. Klienci
 
-#### Opis 11
+#### Opis 12
 
 Zawiera informacje o klientach kwiaciarni.
 
@@ -184,9 +193,9 @@ Zawiera informacje o klientach kwiaciarni.
 | id_klienta | Tak              | Nie                   | Tak        | Nie          | NUMBER            | Identyfikator                     |
 | id_danych  | Nie              | Tak (Dane_personalne) | Tak        | Nie          | NUMBER            | Klucz obcy do danych personalnych |
 
-### 12. Rachunki
+### 13. Rachunki
 
-#### Opis 12
+#### Opis 13
 
 Zawiera informacje o rachunkach wystawionych przez kwiaciarnię.
 
@@ -200,23 +209,35 @@ Zawiera informacje o rachunkach wystawionych przez kwiaciarnię.
 | data_sprzedazy | Nie              | Nie               | Nie        | Nie          | DATE              | Data sprzedaży           |
 | suma_pln       | Nie              | Nie               | Nie        | Nie          | DECIMAL(10,2)     | Suma do zapłaty w PLN    |
 
-### 13. Pozycja paragonu
+### 14. Pozycja paragonu_gatunek
 
-#### Opis 13
+#### Opis 14
 
-Zawiera szczegóły dotyczące każdej pozycji na paragonie.
+Zawiera szczegóły dotyczące każdej pozycji gatunku na paragonie.
 
 | **Nazwa**           | **Klucz główny** | **Klucz obcy** | **Unique** | **NULLable** | **Typ/Dziedzina** | **Opis**               |
 | ------------------- | ---------------- | -------------- | ---------- | ------------ | ----------------- | ---------------------- |
 | id_pozycji_paragonu | Tak              | Nie            | Tak        | Nie          | NUMBER            | Identyfikator          |
 | id_rachunku         | Nie              | Tak (Rachunki) | Nie        | Nie          | NUMBER            | Klucz obcy do rachunku |
 | id_gatunku          | Nie              | Tak (Gatunki)  | Nie        | Tak          | NUMBER            | Klucz obcy do gatunku  |
+| ilosc               | Nie              | Nie            | Nie        | Nie          | SMALLINT          | Ilość                  |
+
+### 15. Pozycja paragonu_usługa
+
+#### Opis 15
+
+Zawiera szczegóły dotyczące każdej pozycji usług na paragonie.
+
+| **Nazwa**           | **Klucz główny** | **Klucz obcy** | **Unique** | **NULLable** | **Typ/Dziedzina** | **Opis**               |
+| ------------------- | ---------------- | -------------- | ---------- | ------------ | ----------------- | ---------------------- |
+| id_pozycji_paragonu | Tak              | Nie            | Tak        | Nie          | NUMBER            | Identyfikator          |
+| id_rachunku         | Nie              | Tak (Rachunki) | Nie        | Nie          | NUMBER            | Klucz obcy do rachunku |
 | id_uslugi           | Nie              | Tak (Uslugi)   | Nie        | Tak          | NUMBER            | Klucz obcy do usługi   |
 | ilosc               | Nie              | Nie            | Nie        | Nie          | SMALLINT          | Ilość                  |
 
-### 14. Dostawcy
+### 16. Dostawcy
 
-#### Opis 14
+#### Opis 16
 
 Zawiera informacje o dostawcach dla kwiaciarni.
 
@@ -228,9 +249,9 @@ Zawiera informacje o dostawcach dla kwiaciarni.
 | email       | Nie              | Nie            | Nie        | Tak          | VARCHAR2(50)      | Adres email          |
 | id_adresu   | Nie              | Tak (Adresy)   | Nie        | Nie          | NUMBER            | Klucz obcy do adresu |
 
-### 15. Dostawy
+### 17. Dostawy
 
-#### Opis 15
+#### Opis 17
 
 Zawiera informacje o dostawach roślin do magazynów kwiaciarni.
 
@@ -243,9 +264,9 @@ Zawiera informacje o dostawach roślin do magazynów kwiaciarni.
 | ilosc        | Nie              | Nie            | Nie        | Nie          | SMALLINT          | Ilość dostarczonych roślin |
 | data_dostawy | Nie              | Nie            | Nie        | Nie          | DATE              | Data dostawy               |
 
-### 16. Zamówienia
+### 18. Zamówienia
 
-#### Opis 16
+#### Opis 18
 
 Zawiera informacje o zamówieniach klientów.
 
@@ -256,9 +277,9 @@ Zawiera informacje o zamówieniach klientów.
 | data_zamowienia | Nie              | Nie            | Nie        | Nie          | DATE              | Data zamówienia       |
 | status          | Nie              | Nie            | Nie        | Nie          | VARCHAR2(20)      | Status zamówienia     |
 
-### 17. Zamówienia Pozycje
+### 19. Zamówienia Pozycje
 
-#### Opis 17
+#### Opis 19
 
 Zawiera szczegółowe informacje o zamówionych pozycjach (gatunki roślin i usługi).
 
@@ -270,9 +291,9 @@ Zawiera szczegółowe informacje o zamówionych pozycjach (gatunki roślin i us�
 | id_uslugi             | Nie              | Tak (Usługi)     | Nie        | Tak          | NUMBER            | Klucz obcy do usługi        |
 | ilosc                 | Nie              | Nie              | Nie        | Nie          | SMALLINT          | Ilość zamówionych elementów |
 
-### 18. Dostawy Klientów
+### 20. Dostawy Klientów
 
-#### Opis 18
+#### Opis 20
 
 Zawiera informacje o dostawach zamówień do klientów.
 
@@ -285,9 +306,9 @@ Zawiera informacje o dostawach zamówień do klientów.
 | data_dostawy  | Nie              | Nie              | Nie        | Nie          | DATE              | Data dostawy             |
 | status        | Nie              | Nie              | Nie        | Nie          | VARCHAR2(20)      | Status dostawy           |
 
-### 19. Oferty Specjalne
+### 21. Oferty Specjalne
 
-#### Opis 19
+#### Opis 21
 
 Zawiera informacje o specjalnych ofertach kwiaciarni na określone gatunki roślin lub usługi.
 
@@ -300,9 +321,9 @@ Zawiera informacje o specjalnych ofertach kwiaciarni na określone gatunki rośl
 | data_rozpoczecia | Nie              | Nie            | Nie        | Nie          | DATE              | Data rozpoczęcia oferty |
 | data_zakonczenia | Nie              | Nie            | Nie        | Nie          | DATE              | Data zakończenia oferty |
 
-### 20. Reklamacje
+### 22. Reklamacje
 
-#### Opis 20
+#### Opis 22
 
 Zawiera informacje o reklamacjach złożonych przez klientów.
 

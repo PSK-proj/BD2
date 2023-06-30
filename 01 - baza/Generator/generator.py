@@ -85,14 +85,21 @@ with open('../Dane/dane_personalne.csv', 'w', newline='', encoding='utf-8') as f
     writer = csv.writer(file)
     for _ in range(num_of_rows):
         id_danych = _
-        id_adresu = random.randint(101, num_of_rows - 1)
         nazwisko = fake.last_name()
         imie = fake.first_name()
         PESEL = fake.random_number(digits=11, fix_len=True)
         NIP = fake.random_number(digits=10, fix_len=True)
         telefon = fake.phone_number()
         email = fake.email()
-        writer.writerow([id_danych, id_adresu, nazwisko, imie, PESEL, NIP, telefon, email])
+        writer.writerow([id_danych, nazwisko, imie, PESEL, NIP, telefon, email])
+
+#* Generowanie danych dla tabeli 'dane_personalneadresy'
+with open('../Dane/dane_personalneadresy.csv', 'w', newline='', encoding='utf-8') as file:
+    writer = csv.writer(file)
+    for _ in range(num_of_rows):
+        id_danych = _
+        id_adresu = random.randint(1, num_of_rows - 1)
+        writer.writerow([id_danych, id_adresu])
 
 #* Generowanie danych dla tabeli 'pracownicy'
 with open('../Dane/pracownicy.csv', 'w', newline='', encoding='utf-8') as file:
@@ -140,16 +147,25 @@ with open('../Dane/rachunki.csv', 'w', newline='', encoding='utf-8') as file:
         suma_pln = round(random.uniform(10, 1000), 2)
         writer.writerow([id_rachunku, id_kwiaciarni, id_pracownika, id_klienta, typ_rachunku, data_sprzedazy, suma_pln])
 
-#* Generowanie danych dla tabeli 'pozycja_paragonu'
-with open('../Dane/pozycja_paragonu.csv', 'w', newline='', encoding='utf-8') as file:
+#* Generowanie danych dla tabeli 'pozycja_paragonu_gatunek'
+with open('../Dane/pozycja_paragonu_gatunek.csv', 'w', newline='', encoding='utf-8') as file:
     writer = csv.writer(file)
     for _ in range(num_of_rows):
         id_pozycji_paragonu = _
         id_rachunku = random.randint(0, num_of_rows - 1)
         id_gatunku = random.randint(0, 100 - 1)
+        ilosc = random.randint(1, 10)
+        writer.writerow([id_pozycji_paragonu, id_rachunku, id_gatunku, ilosc])
+
+#* Generowanie danych dla tabeli 'pozycja_paragonu_usluga'
+with open('../Dane/pozycja_paragonu_usluga.csv', 'w', newline='', encoding='utf-8') as file:
+    writer = csv.writer(file)
+    for _ in range(num_of_rows):
+        id_pozycji_paragonu = _
+        id_rachunku = random.randint(0, num_of_rows - 1)
         id_uslugi = random.randint(0, 100 - 1)
         ilosc = random.randint(1, 10)
-        writer.writerow([id_pozycji_paragonu, id_rachunku, id_gatunku, id_uslugi, ilosc])
+        writer.writerow([id_pozycji_paragonu, id_rachunku, id_uslugi, ilosc])
 
 #* Generowanie danych dla tabeli 'dostawcy'
 with open('../Dane/dostawcy.csv', 'w', newline='', encoding='utf-8') as file:

@@ -1,23 +1,47 @@
-DROP TABLE reklamacje CASCADE CONSTRAINTS;
-DROP TABLE oferty_specjalne CASCADE CONSTRAINTS;
-DROP TABLE dostawy_klientow CASCADE CONSTRAINTS;
-DROP TABLE zamowieniapozycje CASCADE CONSTRAINTS;
-DROP TABLE zamowienia CASCADE CONSTRAINTS;
-DROP TABLE dostawy CASCADE CONSTRAINTS;
-DROP TABLE dostawcy CASCADE CONSTRAINTS;
-DROP TABLE pozycja_paragonu CASCADE CONSTRAINTS;
-DROP TABLE rachunki CASCADE CONSTRAINTS;
-DROP TABLE klienci CASCADE CONSTRAINTS;
-DROP TABLE zatrudnienia CASCADE CONSTRAINTS;
-DROP TABLE pracownicy CASCADE CONSTRAINTS;
-DROP TABLE dane_personalne CASCADE CONSTRAINTS;
-DROP TABLE kwiaciarnieuslugi CASCADE CONSTRAINTS;
-DROP TABLE uslugi CASCADE CONSTRAINTS;
-DROP TABLE magazynygatunki CASCADE CONSTRAINTS;
-DROP TABLE gatunki CASCADE CONSTRAINTS;
-DROP TABLE magazyny CASCADE CONSTRAINTS;
-DROP TABLE kwiaciarnie CASCADE CONSTRAINTS;
-DROP TABLE adresy CASCADE CONSTRAINTS;
+DROP TABLE reklamacje
+CASCADE CONSTRAINTS;
+DROP TABLE oferty_specjalne
+CASCADE CONSTRAINTS;
+DROP TABLE dostawy_klientow
+CASCADE CONSTRAINTS;
+DROP TABLE zamowieniapozycje
+CASCADE CONSTRAINTS;
+DROP TABLE zamowienia
+CASCADE CONSTRAINTS;
+DROP TABLE dostawy
+CASCADE CONSTRAINTS;
+DROP TABLE dostawcy
+CASCADE CONSTRAINTS;
+DROP TABLE pozycja_paragonu_usluga
+CASCADE CONSTRAINTS;
+DROP TABLE pozycja_paragonu_gatunek
+CASCADE CONSTRAINTS;
+DROP TABLE rachunki
+CASCADE CONSTRAINTS;
+DROP TABLE klienci
+CASCADE CONSTRAINTS;
+DROP TABLE zatrudnienia
+CASCADE CONSTRAINTS;
+DROP TABLE pracownicy
+CASCADE CONSTRAINTS;
+DROP TABLE dane_personalneadresy
+CASCADE CONSTRAINTS;
+DROP TABLE dane_personalne
+CASCADE CONSTRAINTS;
+DROP TABLE kwiaciarnieuslugi
+CASCADE CONSTRAINTS;
+DROP TABLE uslugi
+CASCADE CONSTRAINTS;
+DROP TABLE magazynygatunki
+CASCADE CONSTRAINTS;
+DROP TABLE gatunki
+CASCADE CONSTRAINTS;
+DROP TABLE magazyny
+CASCADE CONSTRAINTS;
+DROP TABLE kwiaciarnie
+CASCADE CONSTRAINTS;
+DROP TABLE adresy
+CASCADE CONSTRAINTS;
 /
 CREATE TABLE adresy
 (
@@ -74,13 +98,19 @@ CREATE TABLE kwiaciarnieuslugi
 CREATE TABLE dane_personalne
 (
     id_danych NUMBER CONSTRAINT dane_pk PRIMARY KEY,
-    id_adresu NUMBER CONSTRAINT dane_adresy_fk REFERENCES adresy(id_adresu) NOT NULL,
     nazwisko VARCHAR2(30) NOT NULL,
     imie VARCHAR2(30),
     PESEL NUMBER(11),
     NIP NUMBER(10),
     telefon VARCHAR2(50),
     email VARCHAR2(50)
+)
+/
+CREATE TABLE dane_personalneadresy
+(
+    id_danych NUMBER CONSTRAINT dpa_dane_fk REFERENCES dane_personalne(id_danych),
+    id_adresu NUMBER CONSTRAINT dpa_adresy_fk REFERENCES adresy(id_adresu),
+    CONSTRAINT danepersonalneadresy_pk PRIMARY KEY (id_danych, id_adresu)
 )
 /
 CREATE TABLE pracownicy
@@ -118,12 +148,19 @@ CREATE TABLE rachunki
     suma_pln DECIMAL(10,2) NOT NULL
 )
 /
-CREATE TABLE pozycja_paragonu
+CREATE TABLE pozycja_paragonu_gatunek
 (
-    id_pozycji_paragonu NUMBER CONSTRAINT pozycja_paragonu_pk PRIMARY KEY,
-    id_rachunku NUMBER CONSTRAINT pozycja_paragonu_rachunki_fk REFERENCES rachunki(id_rachunku) NOT NULL,
-    id_gatunku NUMBER CONSTRAINT pozycja_paragonu_gatunki_fk REFERENCES gatunki(id_gatunku),
-    id_uslugi NUMBER CONSTRAINT pozycja_paragonu_uslugi_fk REFERENCES uslugi(id_uslugi),
+    id_pozycji_paragonu NUMBER CONSTRAINT pozycja_paragonu_gatunek_pk PRIMARY KEY,
+    id_rachunku NUMBER CONSTRAINT pozycja_paragonu_gatunek_rachunki_fk REFERENCES rachunki(id_rachunku) NOT NULL,
+    id_gatunku NUMBER CONSTRAINT pozycja_paragonu_gatunek_gatunki_fk REFERENCES gatunki(id_gatunku),
+    ilosc SMALLINT NOT NULL
+)
+/
+CREATE TABLE pozycja_paragonu_usluga
+(
+    id_pozycji_paragonu NUMBER CONSTRAINT pozycja_paragonu_usluga_pk PRIMARY KEY,
+    id_rachunku NUMBER CONSTRAINT pozycja_paragonu_usluga_rachunki_fk REFERENCES rachunki(id_rachunku) NOT NULL,
+    id_uslugi NUMBER CONSTRAINT pozycja_paragonu_usluga_uslugi_fk REFERENCES uslugi(id_uslugi),
     ilosc SMALLINT NOT NULL
 )
 /

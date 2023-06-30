@@ -1,5 +1,5 @@
 
-SQL*Loader: Release 21.0.0.0.0 - Production on So Cze 24 17:49:46 2023
+SQL*Loader: Release 21.0.0.0.0 - Production on So Lip 1 01:19:12 2023
 Version 21.3.0.0.0
 
 Copyright (c) 1982, 2021, Oracle and/or its affiliates.  All rights reserved.
@@ -46,8 +46,8 @@ Odczytane bajty bufora:  1048576
 Łączna liczba odrzuconych rekordów logicznych:        0
 Łączna liczba nieprzyjętych rekordów logicznych:        0
 
-Rozpoczęcie wykonania  So Cze 24 17:49:46 2023
-Zakończenie wykonania  So Cze 24 17:49:46 2023
+Rozpoczęcie wykonania  So Lip 01 01:19:12 2023
+Zakończenie wykonania  So Lip 01 01:19:12 2023
 
-Całkowity czas:       00:00:00.15
-Czas CPU:             00:00:00.11
+Całkowity czas:       00:00:00.14
+Czas CPU:             00:00:00.08

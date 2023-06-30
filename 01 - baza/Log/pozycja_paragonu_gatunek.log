@@ -1,13 +1,13 @@
 
-SQL*Loader: Release 21.0.0.0.0 - Production on So Lip 1 01:19:12 2023
+SQL*Loader: Release 21.0.0.0.0 - Production on So Lip 1 01:19:13 2023
 Version 21.3.0.0.0
 
 Copyright (c) 1982, 2021, Oracle and/or its affiliates.  All rights reserved.
 
-Plik sterujący:          ./Loader/dane_personalne.ctl
-Plik danych:             .\\Dane\\dane_personalne.csv
+Plik sterujący:          ./Loader/pozycja_paragonu_gatunek.ctl
+Plik danych:             .\\Dane\\pozycja_paragonu_gatunek.csv
   Napis opcji przetwarzania plików: "str '\r\n'"
-  Plik odrzutów:         ./Loader/dane_personalne.bad
+  Plik odrzutów:         ./Loader/pozycja_paragonu_gatunek.bad
   Plik nieprzyjęc:  brak specyfikacji
 
  (Zezwolenie na wszystkie nieprzyjęcia)
@@ -19,29 +19,26 @@ Zmienna tablicowa:        250 wierszy, maksymalnie 1048576 bajtów
 Kontynuacja:    brak specyfikacji
 Użyta ścieżka :      Konwencjonalny
 
-Tabela DANE_PERSONALNE, załadowano z każdego rekordu logicznego.
+Tabela POZYCJA_PARAGONU_GATUNEK, załadowano z każdego rekordu logicznego.
 Działa opcja wstawiania dla tej tabeli: INSERT
 opcja TRAILING NULLCOLS w użyciu
 
    Nazwa kolumny               Pozycja    Dł.   Końc. Ogr. Typ danych
 ------------------------------ ---------- ----- ---- ---- ---------------------
-ID_DANYCH                           FIRST     *   ,       CHARACTER            
-NAZWISKO                             NEXT     *   ,       CHARACTER            
-IMIE                                 NEXT     *   ,       CHARACTER            
-PESEL                                NEXT     *   ,       CHARACTER            
-NIP                                  NEXT     *   ,       CHARACTER            
-TELEFON                              NEXT     *   ,       CHARACTER            
-EMAIL                                NEXT     *   ,       CHARACTER            
+ID_POZYCJI_PARAGONU                 FIRST     *   ,       CHARACTER            
+ID_RACHUNKU                          NEXT     *   ,       CHARACTER            
+ID_GATUNKU                           NEXT     *   ,       CHARACTER            
+ILOSC                                NEXT     *   ,       CHARACTER            
 
 
-Tabela DANE_PERSONALNE:
+Tabela POZYCJA_PARAGONU_GATUNEK:
   1000 Wiersze - załadowane pomyślnie.
   0 Wiersze - nie załadowano wskutek błędów danych.
   0 Wiersze - nie załadowano wskutek niepowodzenia wszystkich klauzul WHEN.
   0 Wiersze - nie załadowano, ponieważ wszystkie pola miały wartość Null.
 
 
-Przestrzeń przydziel. dla zmiennej tablicowej:   451500 B (wierszy: 250)
+Przestrzeń przydziel. dla zmiennej tablicowej:   258000 B (wierszy: 250)
 Odczytane bajty bufora:  1048576
 
 Łączna liczba pominiętych rekordów logicznych:        0
@@ -49,8 +46,8 @@ Odczytane bajty bufora:  1048576
 Łączna liczba odrzuconych rekordów logicznych:        0
 Łączna liczba nieprzyjętych rekordów logicznych:        0
 
-Rozpoczęcie wykonania  So Lip 01 01:19:12 2023
-Zakończenie wykonania  So Lip 01 01:19:13 2023
+Rozpoczęcie wykonania  So Lip 01 01:19:13 2023
+Zakończenie wykonania  So Lip 01 01:19:14 2023
 
-Całkowity czas:       00:00:00.14
-Czas CPU:             00:00:00.06
+Całkowity czas:       00:00:00.15
+Czas CPU:             00:00:00.11
