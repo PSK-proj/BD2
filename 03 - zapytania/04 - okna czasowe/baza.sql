@@ -9,11 +9,11 @@ FROM rachunki r
 -- Średnia cena sprzedaży dla każdego gatunku kwiatu w danym miesiącu oraz w całym roku.
 SELECT g.nazwa AS gatunek,
   EXTRACT(MONTH FROM r.data_sprzedazy) AS miesiac,
-  AVG(g.cena) OVER (PARTITION BY g.nazwa ORDER BY EXTRACT(MONTH FROM r.data_sprzedazy) RANGE BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) AS srednia_roczna,
-  AVG(g.cena) OVER (PARTITION BY g.nazwa ORDER BY EXTRACT(MONTH FROM r.data_sprzedazy)) AS srednia_miesieczna
-FROM pozycja_paragonu pp
-  JOIN rachunki r ON pp.id_rachunku = r.id_rachunku
-  JOIN gatunki g ON pp.id_gatunku = g.id_gatunku;
+  AVG(r.suma_pln / pg.ilosc) OVER (PARTITION BY g.nazwa ORDER BY EXTRACT(MONTH FROM r.data_sprzedazy) RANGE BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) AS srednia_roczna,
+  AVG(r.suma_pln / pg.ilosc) OVER (PARTITION BY g.nazwa ORDER BY EXTRACT(MONTH FROM r.data_sprzedazy)) AS srednia_miesieczna
+FROM rachunki r
+  JOIN pozycja_paragonu_gatunek pg ON r.id_rachunku = pg.id_rachunku
+  JOIN gatunki g ON pg.id_gatunku = g.id_gatunku;
 -- Sens praktyczny: Umożliwia analizę popularności gatunków kwiatów w różnych okresach, co jest przydatne przy planowaniu zakupów i ustalaniu strategii cenowych.
 
 -- Różnica w liczbie transakcji pomiędzy bieżącym a poprzednim miesiącem dla każdej kwiaciarni.

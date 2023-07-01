@@ -1462,7 +1462,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGInWWDahDC4jw="
 							},
-							"name": "cena",
+							"name": "suma_pln",
 							"type": "DECIMAL",
 							"length": "10,2"
 						},

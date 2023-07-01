@@ -1,28 +1,53 @@
--- Suma sprzedaży w rozbiciu na gatunki i usługi.
-SELECT g.nazwa AS gatunek, u.nazwa AS usluga, SUM(g.cena * pp.ilosc + (CASE WHEN pp.id_uslugi IS NOT NULL THEN u.doplata ELSE 0 END) * pp.ilosc) AS calkowita_sprzedaz
-FROM pozycja_paragonu pp
-  JOIN gatunki g ON pp.id_gatunku = g.id_gatunku
-  LEFT JOIN uslugi u ON pp.id_uslugi = u.id_uslugi
-  JOIN rachunki r ON pp.id_rachunku = r.id_rachunku
-GROUP BY ROLLUP (g.nazwa, u.nazwa);
--- Sens praktyczny: Umożliwia analizę sprzedaży według kombinacji gatunków kwiatów i usług, co pomaga w planowaniu i optymalizacji oferty.
+-- Zapytanie analizujące sprzedaż produktów według miasta i gatunku. Pozwala to na identyfikację, które miasta i gatunki produktów generują największe przychody.
+SELECT
+  adresy.miasto,
+  gatunki.id_gatunku,
+  SUM(pozycja_paragonu_gatunek.ilosc) AS laczna_ilosc,
+  SUM(pozycja_paragonu_gatunek.ilosc * gatunki.cena) AS laczna_kwota
+FROM
+  pozycja_paragonu_gatunek
+  JOIN
+  rachunki ON pozycja_paragonu_gatunek.id_rachunku = rachunki.id_rachunku
+  JOIN
+  kwiaciarnie ON rachunki.id_kwiaciarni = kwiaciarnie.id_kwiaciarni
+  JOIN
+  adresy ON kwiaciarnie.id_adresu = adresy.id_adresu
+  JOIN
+  gatunki ON pozycja_paragonu_gatunek.id_gatunku = gatunki.id_gatunku
+GROUP BY
+    CUBE (adresy.miasto, gatunki.id_gatunku);
 
--- Suma sprzedaży w rozbiciu na kwiaciarnie, gatunki i usługi.
-SELECT k.nazwa AS kwiaciarnia, g.nazwa AS gatunek, u.nazwa AS usluga, SUM(g.cena * pp.ilosc + (CASE WHEN pp.id_uslugi IS NOT NULL THEN u.doplata ELSE 0 END) * pp.ilosc) AS calkowita_sprzedaz
-FROM pozycja_paragonu pp
-  JOIN gatunki g ON pp.id_gatunku = g.id_gatunku
-  LEFT JOIN uslugi u ON pp.id_uslugi = u.id_uslugi
-  JOIN rachunki r ON pp.id_rachunku = r.id_rachunku
-  JOIN kwiaciarnie k ON r.id_kwiaciarni = k.id_kwiaciarni
-GROUP BY CUBE (k.nazwa, g.nazwa, u.nazwa);
--- Sens praktyczny: Pozwala na szczegółową analizę sprzedaży według kwiaciarni, gatunków i usług, co jest przydatne do identyfikacji wzorców sprzedaży i planowania strategii biznesowych.
 
--- Suma sprzedaży w rozbiciu na kwiaciarnie, miasta i gatunki.
-SELECT k.nazwa AS kwiaciarnia, a.miasto AS miasto, g.nazwa AS gatunek, SUM(g.cena * pp.ilosc) AS calkowita_sprzedaz
-FROM pozycja_paragonu pp
-  JOIN gatunki g ON pp.id_gatunku = g.id_gatunku
-  JOIN rachunki r ON pp.id_rachunku = r.id_rachunku
-  JOIN kwiaciarnie k ON r.id_kwiaciarni = k.id_kwiaciarni
-  JOIN adresy a ON k.id_adresu = a.id_adresu
-GROUP BY CUBE (k.nazwa, a.miasto, g.nazwa);
--- Sens praktyczny: Pomaga w zrozumieniu, jak lokalizacja i gatunki kwiatów wpływają na wyniki sprzedaży, co jest użyteczne przy podejmowaniu decyzji dotyczących lokalizacji sklepów i oferty produktów.
+-- Zapytanie analizujące wpływy z usług w różnych kwiaciarniach. Można dzięki temu zrozumieć, jakie usługi są najbardziej dochodowe w różnych lokalizacjach.
+SELECT
+  kwiaciarnie.id_kwiaciarni,
+  uslugi.id_uslugi,
+  SUM(pozycja_paragonu_usluga.ilosc) AS laczna_ilosc,
+  SUM(pozycja_paragonu_usluga.ilosc * uslugi.doplata) AS laczna_kwota
+FROM
+  pozycja_paragonu_usluga
+  JOIN
+  rachunki ON pozycja_paragonu_usluga.id_rachunku = rachunki.id_rachunku
+  JOIN
+  kwiaciarnie ON rachunki.id_kwiaciarni = kwiaciarnie.id_kwiaciarni
+  JOIN
+  uslugi ON pozycja_paragonu_usluga.id_uslugi = uslugi.id_uslugi
+GROUP BY
+    CUBE (kwiaciarnie.id_kwiaciarni, uslugi.id_uslugi);
+
+-- Zapytanie analizujące wpływy od różnych klientów w zależności od gatunku produktu. Pozwala to na zrozumienie, jacy klienci wydają najwięcej pieniędzy na jakie gatunki produktów.
+SELECT
+  klienci.id_klienta,
+  gatunki.id_gatunku,
+  SUM(pozycja_paragonu_gatunek.ilosc) AS laczna_ilosc,
+  SUM(pozycja_paragonu_gatunek.ilosc * gatunki.cena) AS laczna_kwota
+FROM
+  pozycja_paragonu_gatunek
+  JOIN
+  rachunki ON pozycja_paragonu_gatunek.id_rachunku = rachunki.id_rachunku
+  JOIN
+  klienci ON rachunki.id_klienta = klienci.id_klienta
+  JOIN
+  gatunki ON pozycja_paragonu_gatunek.id_gatunku = gatunki.id_gatunku
+GROUP BY
+CUBE (klienci.id_klienta, gatunki.id_gatunku);

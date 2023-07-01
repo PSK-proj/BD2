@@ -1,30 +1,31 @@
 CREATE OR REPLACE PROCEDURE load_data AS
 BEGIN
-  -- Wprowadzanie danych do Dim_Miasto
+  -- Wprowadź dane do Dim_Miasto
   INSERT INTO Dim_Miasto
     (id_miasta, nazwa_miasta)
-  SELECT id_adresu, miasto
+  SELECT DISTINCT id_adresu, miasto
   FROM adresy;
 
-  -- Wprowadzanie danych do Dim_Kwiaciarnia
+  -- Wprowadź dane do Dim_Kwiaciarnia
   INSERT INTO Dim_Kwiaciarnia
     (id_kwiaciarni, nazwa, id_miasta)
-  SELECT id_kwiaciarni, nazwa, id_adresu
-  FROM kwiaciarnie;
+  SELECT k.id_kwiaciarni, k.nazwa, a.id_adresu
+  FROM kwiaciarnie k
+    JOIN adresy a ON k.id_adresu = a.id_adresu;
 
-  -- Wprowadzanie danych do Dim_Gatunek
+  -- Wprowadź dane do Dim_Gatunek
   INSERT INTO Dim_Gatunek
     (id_gatunku, nazwa)
   SELECT id_gatunku, nazwa
   FROM gatunki;
 
-  -- Wprowadzanie danych do Dim_Usluga
+  -- Wprowadź dane do Dim_Usluga
   INSERT INTO Dim_Usluga
     (id_uslugi, nazwa, cena)
   SELECT id_uslugi, nazwa, doplata
   FROM uslugi;
 
-  -- Wprowadzanie danych do Dim_Pracownik
+  -- Wprowadź dane do Dim_Pracownik
   INSERT INTO Dim_Pracownik
     (id_pracownika, imie, nazwisko, stanowisko, data_zatrudnienia)
   SELECT p.id_pracownika, dp.imie, dp.nazwisko, p.stanowisko, MAX(z.data_przyjecia)
@@ -40,18 +41,29 @@ BEGIN
   FROM klienci k
     JOIN dane_personalne dp ON k.id_danych = dp.id_danych;
 
-  -- Wprowadzanie danych do Fakt_Sprzedazy
+  -- Wprowadź dane do Fakt_Sprzedazy
   INSERT INTO Fakt_Sprzedazy
-    (id, id_kwiaciarni, id_gatunku, id_uslugi, id_pracownika, id_klienta, ilosc, cena, data_sprzedazy)
-  SELECT fakt_sprzedazy_seq.NEXTVAL, r.id_kwiaciarni, pp.id_gatunku, pp.id_uslugi, r.id_pracownika, r.id_klienta, pp.ilosc, g.cena, r.data_sprzedazy
+    (id, id_kwiaciarni, id_gatunku, id_uslugi, id_pracownika, id_klienta, ilosc, suma_pln, data_sprzedazy)
+  SELECT
+    rownum,
+    r.id_kwiaciarni,
+    pg.id_gatunku,
+    pu.id_uslugi,
+    r.id_pracownika,
+    r.id_klienta,
+    NVL(pg.ilosc, pu.ilosc),
+    r.suma_pln,
+    r.data_sprzedazy
   FROM rachunki r
-    JOIN pozycja_paragonu pp ON r.id_rachunku = pp.id_rachunku
-    JOIN gatunki g ON pp.id_gatunku = g.id_gatunku;
+    LEFT JOIN pozycja_paragonu_gatunek pg ON r.id_rachunku = pg.id_rachunku
+    LEFT JOIN pozycja_paragonu_usluga pu ON r.id_rachunku = pu.id_rachunku;
 
   COMMIT;
   EXCEPTION
     WHEN OTHERS THEN
-        DBMS_OUTPUT.PUT_LINE('An error occurred: ' || SQLCODE || ' ' || SQLERRM);
+        DBMS_OUTPUT.PUT_LINE
+  ('An error occurred: ' || SQLCODE || ' ' || SQLERRM);
 END;
 /
-EXECUTE load_data();
+EXECUTE load_data
+();

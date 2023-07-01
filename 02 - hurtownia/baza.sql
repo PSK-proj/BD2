@@ -63,7 +63,7 @@ CREATE TABLE Fakt_Sprzedazy
     id_pracownika NUMBER REFERENCES Dim_Pracownik(id_pracownika),
     id_klienta NUMBER REFERENCES Dim_Klient(id_klienta),
     ilosc NUMBER,
-    cena DECIMAL(10, 2),
+    suma_pln DECIMAL(10, 2),
     data_sprzedazy DATE
 )
 /
